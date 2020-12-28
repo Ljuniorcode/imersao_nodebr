@@ -12,7 +12,7 @@ Array.prototype.meuMap = function (callback) {
 
 async function main() {
   try {
-    const result = await service.obterPessoas('a')
+    const results = await service.obterPessoas('a')
     // const names = []
     // result.results.forEach(item => {
     //   names.push(item.name)
