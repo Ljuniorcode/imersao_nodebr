@@ -1,16 +1,9 @@
-<<<<<<< HEAD
 const { readFile, writeFile } = require('fs')
-=======
-const { readFile } = require('fs')
->>>>>>> ac5f8b28e536d32d3f7327d46f639a59de230ded
 
 const { promisify } = require('util')
 
 const readFileAsync = promisify(readFile)
-<<<<<<< HEAD
 const writeFileAsync = promisify(writeFile)
-=======
->>>>>>> ac5f8b28e536d32d3f7327d46f639a59de230ded
 
 //outra forma de obter dados do json
 //const dadosJson = require('./herois.json')
@@ -25,7 +18,6 @@ class Database {
     return JSON.parse(arquivo.toString())
   }
 
-<<<<<<< HEAD
   async escreverArquivo(dados) {
     await writeFileAsync(this.NOME_ARQUIVO, JSON.stringify(dados))
     return true
@@ -42,10 +34,6 @@ class Database {
     const dadosFinal = [...dados, heroiComId]
     const resultado = await this.escreverArquivo(dadosFinal)
     return resultado
-=======
-  escreverArquivo() {
->>>>>>> ac5f8b28e536d32d3f7327d46f639a59de230ded
-
   }
 
   async listar(id) {
@@ -54,6 +42,19 @@ class Database {
     return dadosFiltrados
   }
 
+  async remover(id) {
+    if (!id) {
+      return await this.escreverArquivo([])
+    }
+
+    const dados = await this.obterDadosArquivo()
+    const indice = dados.findIndex(item => item.id === parseInt(id))
+    if (indice !== -1) {
+      throw Error('O usuário não existe')
+    }
+    dados.splice(indice, 1)
+    return await this.escreverArquivo(dados)
+  }
 }
 
 module.exports = new Database()

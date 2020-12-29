@@ -9,24 +9,17 @@ const DEFAULT_ITEM_CADASTRAR = {
 }
 
 describe('Suite de manipulação de heróis', () => {
-<<<<<<< HEAD
   before(async () => {
     await database.cadastrar(DEFAULT_ITEM_CADASTRAR)
   })
 
   it('pesquisar um heroi usando arquivos', async () => {
     const expected = DEFAULT_ITEM_CADASTRAR
-
-
-=======
-  it('pesquisar um heroi usando arquivos', async () => {
-    const expected = DEFAULT_ITEM_CADASTRAR
->>>>>>> ac5f8b28e536d32d3f7327d46f639a59de230ded
     const [resultado] = await database.listar(expected.id)
 
     deepStrictEqual(resultado, expected)
   })
-<<<<<<< HEAD
+
   it('Deve cadastrar herói, usando arquivos', async () => {
     const expected = DEFAULT_ITEM_CADASTRAR
     const resultado = await database.cadastrar(DEFAULT_ITEM_CADASTRAR)
@@ -34,11 +27,10 @@ describe('Suite de manipulação de heróis', () => {
 
     deepStrictEqual(actual, expected)
   })
-=======
-  // it('Deve cadastrar herói, usando arquivos', async () => {
-  //   const expected = DEFAULT_ITEM_CADASTRAR
-  //   //
-  //   ok(null, expected)
-  // })
->>>>>>> ac5f8b28e536d32d3f7327d46f639a59de230ded
+
+  it('deve remover um heroi por id', async () => {
+    const expected = true
+    const resultado = await database.remover(DEFAULT_ITEM_CADASTRAR)
+    deepStrictEqual(resultado, expected)
+  })
 })
