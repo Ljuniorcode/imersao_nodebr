@@ -1,8 +1,8 @@
 const axios = require('axios')
-const URL = `https//swapi.dev/`
+const URL = `https//swapi.dev/api/`
 
 async function obterPessoas(nome) {
-  const url = `${URL}/?search=${nome}`
+  const url = `${URL}/?search=${nome}&format=json`
   const response = await axios.get(url)
   return response.data
 }
