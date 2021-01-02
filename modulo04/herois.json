@@ -1,11 +1,1 @@
-<<<<<<< HEAD
-[{"nome":"Flash","poder":"Speed","id":1},{"id":1,"nome":"Flash","poder":"Speed"},{"id":1,"nome":"Flash","poder":"Speed"},{"id":1,"nome":"Flash","poder":"Speed"},{"id":1,"nome":"Flash","poder":"Speed"}]
-=======
-[
-  {
-    "nome": "Flash",
-    "poder": "Speed",
-    "id": 1
-  }
-]
->>>>>>> ac5f8b28e536d32d3f7327d46f639a59de230ded
+[]
