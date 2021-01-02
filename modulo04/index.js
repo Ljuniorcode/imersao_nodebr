@@ -10,10 +10,11 @@ async function main() {
     .option("-p, --poder [value]", "Poder do Heroi")
     .option("-i, --id [value]", "ID do Heroi")
 
+    .option("-c, --cadastrar", "Cadastrar um Heroi")
+    .option("-l, --listar", "Listar um Heroi")
+    .option("-r, --remover", "Remover um Heroi pelo ID")
+    .option("-a, --atualizar [value]", "Atualizar um Heroi pelo ID")
 
-    .option("-c, --cadastrar [value]", "Cadastrar um Heroi")
-    .option("-l, --listar [value]", "Listar um Heroi")
-    .option("-r, --remover [value]", "Remover um Heroi pelo ID")
 
 
     .parse(process.argv)
@@ -22,6 +23,9 @@ async function main() {
 
   try {
     if (Commander.cadastrar) {
+      delete heroi.id
+
+
       const resultado = await Database.cadastrar(heroi)
       if (!resultado) {
         console.error("Heroi não foi cadastrado")
@@ -43,6 +47,20 @@ async function main() {
         return
       }
       console.log('Heroi removido com sucesso')
+    }
+
+    if (Commander.atualizar) {
+      const idParaAtualizar = parseInt(Commander.atualizar)
+      //remover todas chaves undefined
+      const dado = JSON.stringify(heroi)
+      const heroiAtualizar = JSON.parse(dado)
+      const resultado = await Database.atualizar(idParaAtualizar, heroiAtualizar)
+      if (!resultado) {
+        console.error('Não foi possível atualizar o heroi')
+        return
+      }
+      console.log('Heroi atualizado com sucesso!')
+
     }
 
   } catch (error) {
