@@ -42,12 +42,17 @@ class Postgres extends ICrud {
         timestamps: false
       })
 
-      await this._Herois.sync()
+      // await this._herois.sync()
     }
   }
 
-  create(item) {
-    return this._herois.create(item)
+  async create(item) {
+    const { dataValues } = await this._herois.create(item)
+    return dataValues
+  }
+
+  async read(item = {}) {
+    return this._herois.findAll({ where: item, raw: true })
   }
 
   async connect() {
@@ -63,8 +68,6 @@ class Postgres extends ICrud {
     )
     await this.defineModel()
   }
-
-
 }
 
 module.exports = Postgres
